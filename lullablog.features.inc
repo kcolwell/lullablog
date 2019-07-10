@@ -1,21 +1,19 @@
 <?php
+
 /**
  * @file
  * lullablog.features.inc
  */
 
 /**
- * Implementation of hook_views_api().
+ * Implements hook_views_api().
  */
-function lullablog_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => 3.0);
-  }
+function lullablog_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }
 
 /**
- * Implementation of hook_node_info().
+ * Implements hook_node_info().
  */
 function lullablog_node_info() {
   $items = array(
@@ -28,5 +26,6 @@ function lullablog_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
